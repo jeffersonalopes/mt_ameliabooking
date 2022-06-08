@@ -14,7 +14,7 @@
  * Include Required Scripts and StyleSheets
 */
 function add_plugins_and_scripts(){
-   wp_register_style('add-mt-ameleia-css', plugin_dir_url(__FILE__).'views/styles/main.css', '', '', 'screen');
+   wp_register_style('add-mt-ameleia-css', plugin_dir_url(__FILE__).'views/styles/main.css?v=3213', '', '', 'screen');
    wp_register_script('add-mt-amelia-axios', 'https://unpkg.com/axios/dist/axios.min.js', '', null, '');
    wp_register_script('add-mt-amelia-moment', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js', '', null, '');
    
@@ -66,7 +66,7 @@ add_action('wp_enqueue_scripts', 'add_plugins_and_scripts');
 
 function render_subscription_shortcode(){
    ob_start();
-   include 'views/tester.php';
+   include 'views/subscription_shortcode.php';
    $html = ob_get_contents();
    ob_end_clean();
    return $html;

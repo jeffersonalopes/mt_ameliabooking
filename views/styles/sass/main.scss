@@ -23,7 +23,7 @@
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 24px;
+                font-size: 22px;
                 padding:10px 25px;
                 
                 line-height: 28px;
@@ -71,7 +71,7 @@
     #mt_filter_results{
         padding:80px 10px;
         width: 100%;
-        max-height: 500px;
+        min-height: 90vh;
         overflow-y: scroll !important;
         .mt_event_item{
             margin-bottom:20px;
@@ -460,8 +460,8 @@
 
 
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-button {
   width: 0px;
