@@ -83,8 +83,7 @@
     }
 
     async function bookingEvent(eventId){
-        
-        if(!firstName || !lastName || email || phone ){
+        if(!firstName || !lastName || !email || !phone ){
             jQuery("#mt_message_overlay_error").fadeIn();
             jQuery("#mt_message_overlay_error").css('display', 'flex');
         }
