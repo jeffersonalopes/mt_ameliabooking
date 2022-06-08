@@ -23,7 +23,7 @@
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 22px;
+                font-size: 18px;
                 padding:10px 25px;
                 
                 line-height: 28px;
@@ -32,7 +32,7 @@
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 24px;
+                    font-size: 18px;
                     line-height: 28px;
                 }
             }
@@ -40,7 +40,7 @@
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 600;
-                font-size: 24px;
+                font-size: 18px;
                 line-height: 30px;
                 background: #F29F05;
                 border-radius: 30px;
@@ -334,7 +334,7 @@
             font-family: 'Work Sans';
             font-style: normal;
             font-weight: 500;
-            font-size: 24px;
+            font-size: 18px;
             padding:10px 25px;
             line-height: 28px;
             margin-bottom: 15px;
@@ -343,7 +343,7 @@
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 24px;
+                font-size: 18px;
                 line-height: 28px;
             }
         }
@@ -365,6 +365,10 @@
     line-height: 28px;
     color: #FFFFFF;
     border:none;
+}
+.btn-remove{
+  background: #3e4a73 !important;
+  color:WHITE !important;
 }
 
 #mt_container{

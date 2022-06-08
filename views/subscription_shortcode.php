@@ -46,7 +46,8 @@
     let $ = document.querySelector.bind(document);
 
     const controller = new EventsController(ajaxurl, baseurl, $("#mt_filter_results"));
-    const filterController = new FilterController(ajaxurl, baseurl, $("#mt_filters"))
+    const filterController = new FilterController(ajaxurl, baseurl, $("#mt_filters"));
+    let eventList = [];
     let orderBy = "";
     let state = new State();
     let city = new City();
@@ -67,7 +68,7 @@
         jQuery("#mt_loader_overlay").fadeOut();
     }
     async function getEvents() {
-        let eventList = await controller.list();
+         eventList = await controller.list();
         if(eventList.length > 0){
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
@@ -107,12 +108,24 @@
         }
     }
 
+
+    const removeFilters = async() => {
+        jQuery("#mt_loader_overlay").fadeIn();
+        orderBy = ""; state = ""; city = "";
+        filterController.renderFields([], [], "--");
+        eventList = await controller.list();
+        jQuery("#mt_filter_results").css('display', 'block');
+        jQuery("#mt_empty_form").css('display', 'none');
+        controller.renderItems(eventList);
+        jQuery("#mt_loader_overlay").fadeOut();
+    }
+
     //FilterEvents
     const filterEvents = async() => {
        jQuery("#mt_loader_overlay").fadeIn();
        
 
-       let eventList = await controller.list(1, moment(), orderBy, state.sigla ? state.sigla : false,
+       eventList = await controller.list(1, moment(), orderBy, state.sigla ? state.sigla : false,
        city.nome ? city.nome : false);
        if(eventList.length > 0){
             jQuery("#mt_filter_results").css('display', 'block');
@@ -147,6 +160,10 @@
     }
     const changeOrderBy = (order) => {
         orderBy = order;
+        jQuery("#mt_loader_overlay").fadeIn();
+        controller.orderBy(eventList, orderBy);
+        controller.renderItems(eventList);
+        jQuery("#mt_loader_overlay").fadeOut();
     }
 
     //DOOM Controller

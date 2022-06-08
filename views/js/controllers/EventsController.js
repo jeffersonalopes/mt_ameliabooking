@@ -90,6 +90,21 @@ class EventsController {
         return eventList;
     }
 
+    orderBy = function(eventList, orderBy) {
+        if(orderBy){
+            switch(orderBy){
+                case 'instrutor':
+                    eventList = eventList.sort(this.dynamicSort("_instrutor"));
+                break;
+                case 'local':
+                    eventList = eventList.sort(this.dynamicSort("_local"));
+                case 'data':
+                    eventList = eventList.sort(this.dynamicSort("_start"));
+            }
+        }
+        return eventList;
+    }
+
 
     
 

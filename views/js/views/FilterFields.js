@@ -21,7 +21,7 @@ class FilterFields extends View{
                     </div>
                     <div class="mt_filter select">
                         <select id="cityFilter" onchange="changeCity(this.value)" class="form-control">
-                            <option selected disabled>Selecione uma cidade</option>
+                            <option selected disabled>Cidade</option>
                             ${
                                 model.cities.map((c) => {
                                     return(`
@@ -31,18 +31,26 @@ class FilterFields extends View{
                             }
                         </select>
                     </div>
-                    <div class="mt_filter select">
+                    <div class="mt_filter">
+                        <button id="filterButton" onclick="filterEvents()" class="btn btn-primary">
+                            Ver opções
+                        </button>
+                    </div>
+                    <div class="mt_filter">
+                        <button id="removeFilterButton" onclick="removeFilters()" class="btn btn-remove">
+                            Remover Filtros
+                        </button>
+                    </div>
+                </div>
+                <div class="mt_row">
+                    <div class="mt_filter select" style="width: 25%;
+                    flex: none;">
                         <select id="stateFilter" onchange="changeOrderBy(this.value)" class="form-control">
                             <option selected disabled>Ordenar por</option>
                             <option value="local">Local</option>
                             <option value="data">Data</option>
                             <option value="instrutor">Instrutor</option>
                         </select>
-                    </div>
-                    <div class="mt_filter">
-                        <button id="filterButton" onclick="filterEvents()" class="btn btn-primary">
-                            Ver opções
-                        </button>
                     </div>
                 </div>
             </div>

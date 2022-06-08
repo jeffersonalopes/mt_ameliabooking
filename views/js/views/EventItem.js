@@ -18,8 +18,7 @@ class EventItem extends View{
                         ${startDate.format('D')}
                     </div>
                     <div class="mt_event_title">
-                        <h4>${e.name}: ${ e.location ? e.location.name : '' } -   
-                            ${e.organizer.firstName} ${e.organizer.lastName}
+                        <h4>${e.name}
                             <span class="${e.closed || !e.bookable ? 'closed' : 'oppened'}">
                                 Inscrições ${e.closed || !e.bookable ? 'Encerradas' : 'Abertas'}
                             </span>
@@ -34,7 +33,7 @@ class EventItem extends View{
                     </div>
                     <div class="mt_action_button">
                         <button class="btn_open" onclick="toggleDetails(${key})">
-                            Sobre
+                            + Detalhes
                         </button>
                     </div>
                 </div>
