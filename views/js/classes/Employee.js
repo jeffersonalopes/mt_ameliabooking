@@ -26,11 +26,15 @@ class Employee{
         if(response.length < 0) {
             return false;
         }
-        let responseObj = response.filter(u => u.id === id);
+        let responseObj = response.filter(u => u.id == id);
+        console.log(responseObj);
         responseObj = responseObj[0];
+        
         Object.keys(this).forEach((i,k)=>{
             this[i] = responseObj[i.replace('_','')];
         });
+
+        console.log(this);
         return this;
     }
 

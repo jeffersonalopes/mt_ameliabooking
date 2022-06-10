@@ -30,7 +30,7 @@ function add_plugins_and_scripts(){
    wp_register_script('add-plugin-view-eventItem', plugin_dir_url(__FILE__).'views/js/views/EventItem.js','', null, '');
    wp_register_script('add-plugin-view-filterFields', plugin_dir_url(__FILE__).'views/js/views/FilterFields.js','', null, '');
    wp_register_script('add-plugin-view-employeeList', plugin_dir_url(__FILE__).'views/js/views/EmployeeSlideItem.js','', null, '');
-   wp_register_script('add-plugin-view-employeePage', plugin_dir_url(__FILE__).'views/js/views/Employee.JS','', null,);
+   wp_register_script('add-plugin-view-employeePage', plugin_dir_url(__FILE__).'views/js/views/EmployeeView.js','', null,);
 
    //Js Controllers
    wp_register_script('add-plugin-controller-events', plugin_dir_url(__FILE__).'views/js/controllers/EventsController.js','', null, '');
@@ -50,7 +50,7 @@ function add_plugins_and_scripts(){
    wp_enqueue_script('add-plugin-view-eventItem');
    wp_enqueue_script('add-plugin-view-filterFields');
    wp_enqueue_script('add-plugin-view-employeeList');
-   wp_enqueue_script('add-plugin-view-employee');
+   wp_enqueue_script('add-plugin-view-employeePage');
 
    //Enquee Entities
    wp_enqueue_script('add-plugin-classe-location');

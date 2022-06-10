@@ -13,7 +13,7 @@
 
 <script>
     const ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
-    const baseurl = '<?php echo plugin_dir_url( __FILE__ ); ?>';
+    const baseurl = '<?php echo site_url(); ?>';
     let $ = document.querySelector.bind(document);
     let employee_list = [];
     //Get alla employee
@@ -30,6 +30,7 @@
     async function getEmployees() {
         employee_list = await controller.list();
         controller.renderItems(employee_list);
+        startSlider();
     }
 
 

@@ -5,10 +5,16 @@ class EmployeeController {
         this._baseUrl = baseUrl;
         this._employee = employee ? employee : new Employee()
         this._listView = new EmployeeSlideItem(container, this, baseUrl);
+        this._view = new EmployeeView(container, this, baseUrl);
     }
 
     renderItems(employeeList) {
         this._listView.update(employeeList);
+    }
+
+    render(employee){
+        console.log(employee);
+        this._view.update(employee);
     }
 
     list = async () => {

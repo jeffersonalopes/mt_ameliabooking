@@ -17,10 +17,10 @@ class EmployeeSlideItem extends View {
                         <p>${e.location.name}<p>    
                         </div>
                         <div class="d-flex align-items-center justify-content-center mt-3">
-                            <a href="${e.id}" class="btn background-primary-light me-1">
+                            <a href="${baseUrl}/instrutor?id=${e.id}" class="btn background-primary-light me-1">
                                 Saiba +
                             </a>
-                            <a href="#" class="btn background-green-whatsapp">
+                            <a href="${baseUrl}/instrutor?id=${e.id}" class="btn background-green-whatsapp">
                                 Contato
                             </a>
                         </div>
