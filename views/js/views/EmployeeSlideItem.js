@@ -4,7 +4,6 @@ class EmployeeSlideItem extends View {
     }
     template(model, baseUrl) {
         return (model.map((e,key) => {
-        
             return (`
                 <div key="${key}" class="swiper-slide col-12 col-lg-3 d-flex align-items-center justify-content-center p-0">
                     <div class="box rounded-circle text-center">
@@ -15,8 +14,7 @@ class EmployeeSlideItem extends View {
                     <div class="hover">
                         <div>
                         <h6>${e.firstName} ${e.lastName}</h6>
-                        <p>Londrina, PR</p>
-                        <p>Porto Alegre, RS</p>        
+                        <p>${e.location.name}<p>    
                         </div>
                         <div class="d-flex align-items-center justify-content-center mt-3">
                             <a href="${e.id}" class="btn background-primary-light me-1">
@@ -29,8 +27,8 @@ class EmployeeSlideItem extends View {
                     </div>
                     </div>
                 </div>
-            `).join("")
-        }))
+            `)
+        }).join(''))
     };
 
 }

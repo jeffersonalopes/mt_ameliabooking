@@ -4,10 +4,11 @@ class EmployeeController {
         this._ajaxUrl = ajaxUrl;
         this._baseUrl = baseUrl;
         this._employee = employee ? employee : new Employee()
+        this._listView = new EmployeeSlideItem(container, this, baseUrl);
     }
 
     renderItems(employeeList) {
-        
+        this._listView.update(employeeList);
     }
 
     list = async () => {
@@ -26,6 +27,12 @@ class EmployeeController {
         }   
         return false;
     }
+
+    find = async () => {
+        
+    }
+
+    
 
 
 

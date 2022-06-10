@@ -29,12 +29,14 @@ function add_plugins_and_scripts(){
    wp_register_script('add-plugin-view-abstract', plugin_dir_url(__FILE__).'views/js/views/View.js','', null, '');
    wp_register_script('add-plugin-view-eventItem', plugin_dir_url(__FILE__).'views/js/views/EventItem.js','', null, '');
    wp_register_script('add-plugin-view-filterFields', plugin_dir_url(__FILE__).'views/js/views/FilterFields.js','', null, '');
+   wp_register_script('add-plugin-view-employeeList', plugin_dir_url(__FILE__).'views/js/views/EmployeeSlideItem.js','', null, '');
+   wp_register_script('add-plugin-view-employeePage', plugin_dir_url(__FILE__).'views/js/views/Employee.JS','', null,);
 
    //Js Controllers
    wp_register_script('add-plugin-controller-events', plugin_dir_url(__FILE__).'views/js/controllers/EventsController.js','', null, '');
    wp_register_script('add-plugin-controller-filters', plugin_dir_url(__FILE__).'views/js/controllers/FilterController.js','', null, '');
    wp_register_script('add-plugin-controller-employee', plugin_dir_url(__FILE__).'views/js/controllers/EmployeeController.js','', null, '');
-
+   
 
    if (!wp_script_is('jquery', 'enqueued')) {
          wp_enqueue_script('jquery');
@@ -47,6 +49,8 @@ function add_plugins_and_scripts(){
    wp_enqueue_script('add-plugin-view-abstract');
    wp_enqueue_script('add-plugin-view-eventItem');
    wp_enqueue_script('add-plugin-view-filterFields');
+   wp_enqueue_script('add-plugin-view-employeeList');
+   wp_enqueue_script('add-plugin-view-employee');
 
    //Enquee Entities
    wp_enqueue_script('add-plugin-classe-location');
@@ -73,6 +77,22 @@ function render_subscription_shortcode(){
 }
 add_shortcode("mt_render_subscription", "render_subscription_shortcode");
 
+function render_employees_shortcode(){
+   ob_start();
+   include 'views/employees_shortcode.php';
+   $html = ob_get_contents();
+   ob_end_clean();
+   return $html;
+}
+add_shortcode("mt_render_employees", "render_employees_shortcode");
 
 
+function render_employee_shortcode(){
+   ob_start();
+   include 'views/employee_shortcode.php';
+   $html = ob_get_contents();
+   ob_end_clean();
+   return $html;
+}
+add_shortcode("mt_render_employee", "render_employee_shortcode");
 ?>

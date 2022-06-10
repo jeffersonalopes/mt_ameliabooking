@@ -18,7 +18,7 @@ class EventItem extends View{
                         ${startDate.format('D')}
                     </div>
                     <div class="mt_event_title">
-                        <h4>${e.name}
+                        <h4>${e.name} - ${e.organizer.firstName} ${e.organizer.lastName}
                             <span class="${e.closed || !e.bookable ? 'closed' : 'oppened'}">
                                 Inscrições ${e.closed || !e.bookable ? 'Encerradas' : 'Abertas'}
                             </span>
