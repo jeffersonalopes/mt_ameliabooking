@@ -1,4 +1,4 @@
-<div id="mt_employees_shortcode">
+<div id="mt_employees_shortcode" class="p-0">
     <div id="mt_container">
         <div id="mt_filters">
 
@@ -8,7 +8,7 @@
         <section  class="instrutores-carousel">
             <div class="container">
                 <div id="mt-instrutores" class="swiper mt-swiperInstrutores" data-bs-ride="carousel">
-                    <div class="swiper-wrapper"  id="mt_employees_result">
+                    <div class="swiper-wrapper" id="mt_employees_result">
                     </div>
                     <div class="swiper-button-next"></div>
                     <div class="swiper-button-prev"></div>
@@ -64,9 +64,12 @@
         jQuery(document).ready(function() {
         var swiper = new Swiper(".mt-swiperInstrutores", {
             slidesPerView: 2,
-            slidesPerGroup: 2,
+            slidesPerGroup: 1,
             loop: true,
-            spaceBetween: 5,
+            spaceBetween: 10,
+			 autoplay: {
+				delay: 4000,
+			 },
             pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -76,15 +79,20 @@
             prevEl: '.swiper-button-prev',
             },
             breakpoints: {
-            576: {
+            480: {
                 slidesPerView: 2,
-                slidesPerGroup: 2,
-                spaceBetween: 5,
+                slidesPerGroup: 1,
+                spaceBetween: 0,
             },
+			768: {
+                slidesPerView: 3,
+                slidesPerGroup: 1,
+                spaceBetween: 0,
+            },		
             992: {
                 slidesPerView: 4,
-                slidesPerGroup: 4,
-                spaceBetween: 5,
+                slidesPerGroup: 1,
+                spaceBetween: 0,
             },
             },
         });
