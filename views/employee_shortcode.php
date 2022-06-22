@@ -38,6 +38,39 @@
         controller.render(employee);
     }
 
+    sendContactForm = async(event) => {
+        alert('teste');
+        event.preventDefault();
+        const url = 'https://meditacaotranscedental.api-us1.com';
+        const key = 'e95ce61eb9e4517b45d30bdcedb8a51ee117749f9f45bbdce702f03c5522ffb34d8e7eb8';
+
+        let contactReq = await axios.post(`${url}/`, 
+        {
+            "contact": {
+                "email": jQuery("#contactEmail").val(),
+                "firstName": jQuery("#contactName").val(),
+                "lastName": jQuery("#contactName").val(),
+                "phone": jQuery("#contactPhone").val(),
+                "fieldValues": [
+                    {
+                            "field": "34",
+                            "value": employee.firstName+' '+ employee.lastName
+                    },
+                    {
+                            "field": "47",
+                            "value": jQuery("#contactMessage").val()
+                    }
+                ]
+            }
+        },
+        {
+            headers: {'Api-Token': key}
+        });
+        console.log(contactReq);
+
+        return false
+    }
+
     render();
 
     

@@ -1,6 +1,6 @@
-#mt_subscription_shortcode{
+#mt_subscription_shortcode, #mt_employees_shortcode{
     width:100%;
-    padding: 45px 50px;
+    padding: 0px 50px;
     .mt_row{
         width:100%;
         display:flex;
@@ -23,28 +23,31 @@
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 18px;
-                padding:10px 25px;
-                
-                line-height: 28px;
+                font-size: 17px;
+                padding: 8px 25px;
+                line-height: 22px;
                 &::placeholder{
                     color: #F29F05;
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 18px;
-                    line-height: 28px;
+                    font-size: 16px;
+                    line-height: 22px;
                 }
             }
             button{
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 600;
-                font-size: 18px;
-                line-height: 30px;
+                font-size: 16px;
+                line-height: 22px;
                 background: #F29F05;
                 border-radius: 30px;
-                padding:10px 25px;
+                padding:7px 20px;
+                transition: 0.8s;
+                &:hover{
+                  background: #FFC536;
+                }
             }
             &.search{
                 flex: 1;
@@ -56,10 +59,10 @@
                     background-image: url('../resources/svg/select_handler.svg');
                     content:"";
                     right: 23px;
-                    top: 50%;
+                    top: 45%;
                     transform: translateY(-50%);
-                    width: 20px;
-                    height: 20px;
+                    width: 10px;
+                    height: 10px;
                     background-position: center center;
                     background-repeat: no-repeat;
                     position: absolute !important;
@@ -69,10 +72,10 @@
         }
     }
     #mt_filter_results{
-        padding:80px 10px;
+        padding:30px 10px;
         width: 100%;
-        min-height: 90vh;
-        overflow-y: scroll !important;
+        min-height: 80vh;
+        margin-bottom: 60px;
         .mt_event_item{
             margin-bottom:20px;
             width: 100%;
@@ -84,14 +87,14 @@
             .mt_event_date{
                 display: flex;
                 background-color: #FFC536;
-                width: 72px;
-                height: 72px;
+                width: 52px;
+                height: 52px;
                 flex-direction: column;
                 font-family: 'Work Sans';
                 font-style: normal;
                 font-weight: 500;
-                font-size: 30px;
-                line-height: 35px;
+                font-size: 20px;
+                line-height: 25px;
                 border-radius: 10px;
                 color: #FFFFFF;
                 flex-wrap: nowrap;
@@ -103,8 +106,8 @@
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 400;
-                    font-size: 16px;
-                    line-height: 19px;
+                    font-size: 14px;
+                    line-height: 15px;
                     color:#323B50;
                     text-transform: uppercase;
                 }
@@ -115,15 +118,15 @@
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 500;
-                    font-size: 22px;
-                    line-height: 28px;
+                    font-size: 17px;
+                    line-height: 20px;
                     color: #323B50;
                     span{
                         font-family: 'Work Sans';
                         font-style: normal;
                         font-weight: 400;
-                        font-size: 18px;
-                        line-height: 21px;
+                        font-size: 14px;
+                        line-height: 16px;
                         color: #50D63D;
                         background: rgba(166, 212, 145, 0.15);
                         border-radius: 10px;
@@ -153,8 +156,8 @@
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 400;
-                    font-size: 18px;
-                    line-height: 21px;
+                    font-size: 16px;
+                    line-height: 19px;
                     color: #F29F05;
                 }
             }
@@ -172,12 +175,18 @@
                     font-family: 'Work Sans';
                     font-style: normal;
                     font-weight: 700;
-                    font-size: 20px;
-                    line-height: 28px;
+                    font-size: 18px;
+                    line-height: 22px;
                     color: #7896C1;
                     background: none;
-                    padding: 10px 28px;
+                    padding: 8px 24px;
                     cursor: pointer;
+                    transition: 0.5s;
+                    &:hover{
+                      border: 1px solid #7896C1;
+                      color:white;
+                      background-color: #7896C1;
+                    }
                 }
             }
             .mt_row{
@@ -202,14 +211,14 @@
                 }
                 .mt_event_details_title{
                     h4{
-                        color: #FFC536;
+                        color: #e6aa13;
                         display: flex;
                         width: 100%;
                         flex-direction: row;
                         flex-wrap: nowrap;
                         align-content: center;
                         justify-content: space-between;
-                        font-size:22px;
+                        font-size:18px;
                         font-weight: 600;
                         align-items: center;
                         padding-bottom: 20px;
@@ -222,8 +231,9 @@
                 .mt_event_details_description{
                     p{
                         color: #323B50;
-                        font-size: 20px; 
+                        font-size: 18px; 
                         text-align: justify;
+                        margin-bottom:15px;
                     }
                 }
                 button{
@@ -300,14 +310,14 @@
             padding-left: 90px;
             img{
                 position: absolute;
-                bottom: 28px;
+                bottom: 22px;
                 left: 30px;
             }
             &::before{
                 content: "";
                 position: absolute;
                 width: 10px;
-                height: 50px;
+                height: 38px;
                 border-left: solid 1px #F29F05;
                 bottom: 15px;
                 left: 80px;
@@ -321,8 +331,8 @@
             font-family: 'Work Sans';
             font-style: normal;
             font-weight: 500;
-            font-size: 20px;
-            line-height: 28px;
+            font-size: 18px;
+            line-height: 22px;
             color: #323B50;
             margin-bottom:15px;
         }
@@ -335,8 +345,8 @@
             font-style: normal;
             font-weight: 500;
             font-size: 18px;
-            padding:10px 25px;
-            line-height: 28px;
+            padding: 8px 25px;
+            line-height: 15px;
             margin-bottom: 15px;
             &::placeholder{
                 color: #F29F05;
@@ -357,24 +367,39 @@
 .mt_btn_default{
     background: #F29F05;
     border-radius: 30px;
-    padding: 10px 30px;
+    padding: 7px 25px;
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 20px;
     color: #FFFFFF;
     border:none;
+    transition: 0.5s;
+    &:hover{
+      background: #FFC536;
+    }
 }
 .btn-remove{
   background: #3e4a73 !important;
   color:WHITE !important;
+  transition: 0.8s;
+  &:hover{
+    background: white !important;
+    border: solid #3e4a73 1px !important;
+    color: #3e4a73 !important;
+  }
 }
 
 #mt_container{
     position: relative;
     width: 100%;
     height: 100%;
+    float:none;
+    margin: 0 auto;
+    @media screen and (min-width:1366px){
+      max-width: 1000px;
+    }
 }
 
 #mt_loader_overlay{
@@ -396,7 +421,15 @@
     width: 80px;
     height: 80px;
     position: absolute;
-    top: 20%;
+    top: 0%;
+  }
+  span{
+    position: absolute;
+    top: 94px;
+    text-align: center;
+    width: 100%;
+    font-weight: bold;
+    color: #020230;
   }
   .lds-grid div {
     position: absolute;
@@ -461,7 +494,55 @@
   }
 }
 
+@media  screen and (max-width: 768px) {
+  .mt_filter_options{
+    .mt_row{
+      flex-direction: column !important;
+      .mt_filter{
+        width: 100% !important;
+      }
+    }
+  }
+  .mt_filter{
+    button{
+      width: 100%;
+    }
+  }
+  #mt_subscription_shortcode{
+    padding: 10px 20px !important;
+  }
 
+  .mt_event_title{
+    h4{
+      text-align: center !important;
+      span{
+        float: left;
+        margin-left: 0px !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-bottom:10px;
+        margin-top: 10px;
+      }
+    }
+    h5{
+      text-align: center !important;
+    }
+  }
+
+  .mt_event_item{
+    .mt_row{
+      flex-direction: column !important;
+      .mt_column{
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        &:last-child{
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+      }
+    }
+  }
+}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -472,9 +553,9 @@
   height: 0px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #e1e1e1;
+  background: #F29F05;
   border: 0px none #ffffff;
-  border-radius: 50px;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #ffffff;
@@ -483,15 +564,15 @@
   background: #000000;
 }
 ::-webkit-scrollbar-track {
-  background: #666666;
+  background: #6666664f;
   border: 0px none #ffffff;
-  border-radius: 50px;
+  border-radius: 0px;
 }
 ::-webkit-scrollbar-track:hover {
-  background: #666666;
+  background: #6666664f;
 }
 ::-webkit-scrollbar-track:active {
-  background: #333333;
+  background: #6666664f;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;

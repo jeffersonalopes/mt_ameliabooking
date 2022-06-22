@@ -2,7 +2,7 @@ class Employee{
     constructor(birthday= moment(),email= "",firstName= "",
         id= 0,lastName= "",locationId= 0, note= "",phone= "",
         pictureFullPath= "",pictureThumbPath= "",status= "",
-        type= "", location = new Location()
+        type= "", location = new Location(), events = []
     ){
         this._birthday = birthday;
         this._email = email;
@@ -16,35 +16,47 @@ class Employee{
         this._pictureFullPath = pictureFullPath;
         this._pictureThumbPath = pictureThumbPath;
         this._status = status;
+        this._events = events;
         this._type = type;
     }
 
 
     find = async(id,ajaxUrl) => {
-        let response = await axios.get(`${ajaxUrl}?action=wpamelia_api&call=/users/providers&sort=employee`);
-        response = response.data.data.users;
-        if(response.length < 0) {
-            return false;
-        }
-        let responseObj = response.filter(u => u.id == id);
-        console.log(responseObj);
-        responseObj = responseObj[0];
+        let entities_consult = await axios.get(`${ajaxUrl}/?action=wpamelia_api&call=/entities&types[]=employees&types[]=locations`);
+        let employeeList = [];
+        if(entities_consult.status == 200){
+            let locations = entities_consult.data.data.locations;
+            let entities = entities_consult.data.data.employees;
+            entities = entities.filter(e => e.id == id);
+            let e = entities[0];
+            let employeeItem = new Employee();
+            let eventsController = new EventsController(ajaxUrl);
+            let e_location = locations.find(loc => loc.id == e.locationId);
+            let location = new Location();
+            employeeItem.constructByObjects(e, e_location ? location.constructByObjects(e_location) : false);
+            employeeItem.events = await eventsController.listByOrganizer(employeeItem.id);
+            employeeList.push(employeeItem);
         
-        Object.keys(this).forEach((i,k)=>{
-            this[i] = responseObj[i.replace('_','')];
-        });
+            console.log(employeeList);
+            return employeeList[0];
+        }   
+        return false;
+    }
 
-        console.log(this);
+    constructByObjects = (obj, location) => {
+        Object.keys(this).forEach((i,k)=>{
+            if(i == "_location"){
+                this[i] = location;
+            }else{
+                this[i] = obj[i.replace('_','')];
+            }
+        });
         return this;
     }
 
-    constructByObjects = (obj) => {
-        Object.keys(this).forEach((i,k)=>{
-            this[i] = obj[i.replace('_','')];
-        });
-        return this;
+    get events() {
+        return this._events;
     }
-
     get location() {
         return this._location;
     }
@@ -87,7 +99,9 @@ class Employee{
     }
 
 
-
+    set events(events){
+        this._events = events;
+    }
     set location(value){
         this._location = value;
     }

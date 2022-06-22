@@ -25,9 +25,10 @@
         </div>
 
         <div id="mt_message_overlay_success">
-            <h2> Parabéns!</h2>
+            <h2> Obrigada!</h2>
             <h3> 
-                Sua inscrição foi realizada com sucesso!
+                Sua inscrição foi realizada com sucesso! <br/>
+                Você receberá as informações do evento no seu email.
             </h3>
             <button class="mt_btn_default" onclick="closeModal()"> Ok </button>
         </div>
@@ -90,9 +91,9 @@
         }
         else{
             jQuery("#mt_loader_overlay").fadeIn();
-            let bkEvent = new Event();
-            await bkEvent.find(eventId, ajaxurl)
-            let booking = await bkEvent.booking(email, firstName, lastName, phone, ajaxurl);
+            let bkEvent = eventList.filter(e => e.id == eventId);
+            bkEvent = bkEvent[0];
+            let booking = await controller.booking(bkEvent,email, firstName, lastName, phone, ajaxurl);
             if(booking){
                 jQuery("#mt_message_overlay_success").fadeIn();
                 jQuery("#mt_message_overlay_success").css('display', 'flex');
@@ -111,8 +112,9 @@
 
     const removeFilters = async() => {
         jQuery("#mt_loader_overlay").fadeIn();
-        orderBy = ""; state = ""; city = "";
-        filterController.renderFields([], [], "--");
+        state = new State();
+        city = new City();
+        filterController.renderFields(states,[], "--");
         eventList = await controller.list();
         jQuery("#mt_filter_results").css('display', 'block');
         jQuery("#mt_empty_form").css('display', 'none');
@@ -126,7 +128,13 @@
        
 
        eventList = await controller.list(1, moment(), orderBy, state.sigla ? state.sigla : false,
+       
        city.nome ? city.nome : false);
+
+
+
+
+       console.log(eventList);
        if(eventList.length > 0){
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');

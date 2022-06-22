@@ -3,7 +3,8 @@ class FilterFields extends View{
         super(elemento, scope, baseUrl);
     }
 
-    template(model, baseUrl){
+    template(model,baseUrl, date = true){
+        console.log(date);
         return(`
             <div class="mt_filter_options">
                 <div class="mt_row">
@@ -33,7 +34,7 @@ class FilterFields extends View{
                     </div>
                     <div class="mt_filter">
                         <button id="filterButton" onclick="filterEvents()" class="btn btn-primary">
-                            Ver opções
+                            Buscar
                         </button>
                     </div>
                     <div class="mt_filter">
@@ -48,7 +49,9 @@ class FilterFields extends View{
                         <select id="stateFilter" onchange="changeOrderBy(this.value)" class="form-control">
                             <option selected disabled>Ordenar por</option>
                             <option value="local">Local</option>
-                            <option value="data">Data</option>
+                            ${
+                                date == true ? `<option value="data">Data</option>` : ''
+                            }
                             <option value="instrutor">Instrutor</option>
                         </select>
                     </div>

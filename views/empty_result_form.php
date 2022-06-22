@@ -1,12 +1,12 @@
 <style>
 .subtitle{
-    font-size:22px !important;
+    font-size:16px !important;
     font-family: 'Work Sans';
     text-align:center;
     color:#171757;
     float: none !important;
     margin: 0 auto !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 16px !important;
 }
  #_form_4_ { font-size:14px; line-height:1.6; font-family:arial, helvetica, sans-serif; margin:0; max-width: 80% }
  #_form_4_ * { outline:0; }
@@ -21,15 +21,19 @@
  #_form_4_ ._submit { 
     background: #F29F05;
     border-radius: 30px;
-    padding: 10px 30px;
+    padding: 8px 25px;
     font-family: 'Work Sans';
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 22px;
     color: #FFFFFF;
     border:none;
     float: right;
+    transition:0.5s;
+  }
+  #_form_4_ ._submit:hover{
+    background:#FFC536;
   }
  #_form_4_ ._close-icon { cursor:pointer; background-image:url('https://d226aj4ao1t61q.cloudfront.net/esfkyjh1u_forms-close-dark.png'); background-repeat:no-repeat; background-size:14.2px 14.2px; position:absolute; display:block; top:11px; right:9px; overflow:hidden; width:16.2px; height:16.2px; }
  #_form_4_ ._close-icon:before { position:relative; }
@@ -98,7 +102,7 @@
  #_form_4_ ._form-title {font-family: 'Work Sans';
     float: none !important;
     margin: 0 auto !important;
-                font-style: normal; color:#171757; text-align:center; font-size:25px; line-height:22px; font-weight:600; margin-bottom:0; }
+                font-style: normal; color:#171757; text-align:center; font-size:18px; line-height:22px; font-weight:600; margin-bottom:0; }
  #_form_4_:before,#_form_4_:after { content:" "; display:table; }
  #_form_4_:after { clear:both; }
  #_form_4_._inline-style { width:auto; display:inline-block; }
@@ -116,9 +120,9 @@
     font-family: 'Work Sans' !important;
     font-style: normal !important;
     font-weight: 500 !important;
-    font-size: 24px !important;
-    padding:10px 25px !important;
-    line-height: 28px !important;   
+    font-size: 18px !important;
+    padding:8px 25px !important;
+    line-height: 22px !important;   
     margin-bottom: 20px !important; 
 }
 
@@ -127,8 +131,8 @@
     font-family: 'Work Sans' !important;
     font-style: normal;
     font-weight: 500 !important;
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 18px;
+    line-height: 22px;
 }
  
  @media all and (min-width:320px) and (max-width:667px) { #_form_4_._inline-form._inline-style ._inline-style._button-wrapper { margin-top:20px !important; margin-left:0 !important; }

@@ -95,4 +95,14 @@ function render_employee_shortcode(){
    return $html;
 }
 add_shortcode("mt_render_employee", "render_employee_shortcode");
+
+
+function render_panel_scripts_shortcode(){
+   ob_start();
+   include 'views/employee_panel_shortcode.php';
+   $html = ob_get_contents();
+   ob_end_clean();
+   return $html;
+}
+add_shortcode("mt_render_panel_scripts", "render_panel_scripts_shortcode")
 ?>

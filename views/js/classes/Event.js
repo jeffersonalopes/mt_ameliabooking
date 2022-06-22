@@ -178,7 +178,8 @@ class Event {
                     this[i] = location.name;
                 }else{
                     if(i == "_start"){
-                        this[i] = moment(event.periods[0].periodStart);
+                        if(event.periods)
+                            this[i] = moment(event.periods[0].periodStart);
                     }else{
                         this[i] = event[i.replace('_','')];
                     }
