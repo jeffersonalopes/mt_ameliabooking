@@ -181,6 +181,12 @@
   margin-right: 17px;
 }
 
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_date, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_date {
+    margin-right: 0;
+  }
+}
+
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_date span, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_date span {
   font-family: 'Work Sans';
   font-style: normal;
@@ -199,9 +205,17 @@
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 500;
-  font-size: 17px;
+  font-size: 1rem;
   line-height: 20px;
   color: #323B50;
+}
+
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_title h4, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 {
+    font-size: 14px !important;
+    line-height: 16px !important;
+    margin: 0 auto !important;
+  }
 }
 
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span {
@@ -216,6 +230,12 @@
   padding: 5px 12px 5px 26px;
   margin-left: 15px;
   position: relative;
+}
+
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span {
+    font-size: 12px !important;
+  }
 }
 
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span::before, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_title h4 span::before {
@@ -243,9 +263,15 @@
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 19px;
   color: #F29F05;
+}
+
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_title h5, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_title h5 {
+    font-size: 14px;
+  }
 }
 
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_action_button, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_action_button {
@@ -269,20 +295,35 @@
           align-items: center;
 }
 
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_action_button, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_action_button {
+    margin-left: 0;
+  }
+}
+
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_action_button button, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_action_button button {
   border: 1px solid #7896C1;
   border-radius: 30px;
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 22px;
   color: #7896C1;
   background: none;
-  padding: 8px 24px;
+  padding: 9px 31px;
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+}
+
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_action_button button, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_action_button button {
+    font-size: 12px !important;
+    line-height: 14px !important;
+    margin: 0 auto !important;
+    padding: 8px 25px;
+  }
 }
 
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_action_button button:hover, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_action_button button:hover {
@@ -341,7 +382,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: 600;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -349,8 +390,23 @@
   padding-bottom: 20px;
 }
 
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4 {
+    font-size: 14px !important;
+    line-height: 16px !important;
+    margin: 0 auto !important;
+  }
+}
+
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4 img, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4 img {
   cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4 img, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_title h4 img {
+    width: 18px;
+    height: auto;
+  }
 }
 
 #mt_subscription_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_description p, #mt_employees_shortcode #mt_filter_results .mt_event_item .mt_event_details .mt_event_details_description p {
@@ -374,6 +430,12 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+@media screen and (max-width: 992px) {
+  .mt_checkbox_container {
+    margin-top: 10px;
+  }
 }
 
 .mt_checkbox_container .item {
@@ -450,14 +512,27 @@
   position: relative;
 }
 
+@media screen and (max-width: 992px) {
+  .mt_event_details_subscriptions .mt_column {
+    margin-bottom: 10px;
+  }
+}
+
 .mt_event_details_subscriptions .mt_column.phone {
   padding-left: 90px;
 }
 
 .mt_event_details_subscriptions .mt_column.phone img {
   position: absolute;
-  bottom: 22px;
-  left: 30px;
+  bottom: 25px;
+  left: 31px;
+}
+
+@media screen and (max-width: 992px) {
+  .mt_event_details_subscriptions .mt_column.phone img {
+    bottom: 7px;
+    left: 15px;
+  }
 }
 
 .mt_event_details_subscriptions .mt_column.phone::before {
@@ -466,8 +541,16 @@
   width: 10px;
   height: 38px;
   border-left: solid 1px #F29F05;
-  bottom: 15px;
-  left: 80px;
+  bottom: 18px;
+  left: 77px;
+}
+
+@media screen and (max-width: 992px) {
+  .mt_event_details_subscriptions .mt_column.phone::before {
+    height: 32px;
+    left: 52px;
+    bottom: 1px;
+  }
 }
 
 .mt_event_details_subscriptions .mt_column:last-child {
@@ -479,10 +562,18 @@
   font-family: 'Work Sans';
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 22px;
   color: #323B50;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 992px) {
+  .mt_event_details_subscriptions .mt_column label {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 8px;
+  }
 }
 
 .mt_event_details_subscriptions .mt_column select, .mt_event_details_subscriptions .mt_column input {
@@ -497,6 +588,12 @@
   padding: 8px 25px;
   line-height: 15px;
   margin-bottom: 15px;
+}
+
+@media screen and (max-width: 992px) {
+  .mt_event_details_subscriptions .mt_column select, .mt_event_details_subscriptions .mt_column input {
+    font-size: 12px;
+  }
 }
 
 .mt_event_details_subscriptions .mt_column select::-webkit-input-placeholder, .mt_event_details_subscriptions .mt_column input::-webkit-input-placeholder {
@@ -554,6 +651,13 @@
   transition: 0.5s;
 }
 
+@media screen and (max-width: 992px) {
+  .mt_btn_default {
+    font-size: 14px;
+    line-height: 16px;
+  }
+}
+
 .mt_btn_default:hover {
   background: #FFC536;
 }
@@ -577,12 +681,6 @@
   height: 100%;
   float: none;
   margin: 0 auto;
-}
-
-@media screen and (min-width: 1366px) {
-  #mt_container {
-    max-width: 1000px;
-  }
 }
 
 #mt_loader_overlay {
@@ -718,7 +816,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .mt_filter_options .mt_row {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
@@ -758,6 +856,17 @@
     padding-left: 0px !important;
     padding-right: 0px !important;
   }
+}
+
+@media screen and (max-width: 992px) and (max-width: 992px) {
+  .mt_event_item .mt_row .mt_column {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
   .mt_event_item .mt_row .mt_column:last-child {
     padding-left: 0px !important;
     padding-right: 0px !important;
@@ -945,3 +1054,4 @@ input[type="checkbox"]:disabled {
   text-align: center;
   margin-bottom: 15px;
 }
+/*# sourceMappingURL=main.css.map */
