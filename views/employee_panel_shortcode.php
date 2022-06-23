@@ -18,8 +18,19 @@
         setInterval(function () {
             $(".am-has-divider:contains('Periods')").remove();
             $(".el-row:contains('Tags')").remove();
+
+            $(".am-section-grey:contains('This is recurring event')").remove()
+            $(".am-section-grey:contains('recorrente')").remove()
+
+            $(".el-row:contains('Custom Address')").remove()
+            $(".el-row:contains('Endereço Personalizado')").remove()
+
             $(".el-row:contains('Organizer') .el-checkbox").addClass('is-checked')
+            $(".el-row:contains('Organizador') .el-checkbox").addClass('is-checked')
+
             $(".el-row:contains('Organizer') .el-checkbox .el-checkbox__input").addClass('is-checked');
+            $(".el-row:contains('Organizador') .el-checkbox .el-checkbox__input").addClass('is-checked');
+
         }, 200)
 
         //Add default description

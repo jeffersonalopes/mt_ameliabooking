@@ -237,7 +237,7 @@ class EventsController {
                 case 'local':
                     eventList = eventList.sort(this.dynamicSort("_local"));
                 case 'data':
-                    eventList = eventList.sort(this.dynamicSort("_name"));
+                    eventList = eventList.sort(this.dynamicSort("_start"));
             }
         }
         return eventList;

@@ -49,7 +49,7 @@ class FilterFields extends View{
         <div class="mt_row justify-content-end">
           <div class="mt_filter">
             <button id="filterButton" onclick="filterEvents()" class="btn btn-primary">
-            Ver opções
+            Buscar
             </button>
           </div>
           <div class="mt_filter">
