@@ -124,6 +124,7 @@
 
     //FilterEvents
     const filterEvents = async() => {
+        
        jQuery("#mt_loader_overlay").fadeIn();
        
 
