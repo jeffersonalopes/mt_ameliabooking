@@ -83,27 +83,27 @@ class EventItem extends View{
 										<div class="mt_checkbox_container">
 											<div class="item">
 												<input type="checkbox" id="origin" name="Saude fisica" >
-												<label for="origin">Saude fisica</label>
+												<label for="origin">Saúde  fisica</label>
 											</div>
 											<div class="item">
 												<input type="checkbox" id="origin" name="Saude mental" >
-												<label for="origin">Saude mental</label>
+												<label for="origin">Saúde  mental</label>
 											</div>
 											<div class="item">
-												<input type="checkbox" id="origin" name="Inteligência emocional" >
-												<label for="origin">Inteligência emocional</label>
+												<input type="checkbox" id="origin" name="equilíbrio emocional" >
+												<label for="origin">Equilíbrio emocional</label>
 											</div>
 											<div class="item">
-												<input type="checkbox" id="origin" name="Potencia mental" >
-												<label for="origin">Potencia mental</label>
+												<input type="checkbox" id="origin" name="foco e clareza mental" >
+												<label for="origin">Foco e clareza mental</label>
 											</div>
 											<div class="item">
-												<input type="checkbox" id="origin" name="Bem-estar" >
-												<label for="origin">Bem-estar</label>
+												<input type="checkbox" id="origin" name="Autoconhecimento" >
+												<label for="origin">Autoconhecimento</label>
 											</div>
 											<div class="item">
-												<input type="checkbox" id="origin" name="Tranquilidade" >
-												<label for="origin">Tranquilidade</label>
+												<input type="checkbox" id="origin" name="Paz e bem-estar" >
+												<label for="origin">Paz e bem-estar</label>
 											</div>
 										</div>
 									</div>
@@ -111,13 +111,12 @@ class EventItem extends View{
 									height: 308px;
 									margin-top: 30px;">
 										<label>
-										* Li e aceito as políticas de privacidade.* Autorizo que a Meditação Transcendental utilize 
-										meus dados para atividades comerciais e de marketing com a empresa.
+										* Ao preencher meus dados, concordo em receber comunicações sobre produtos e serviços, conforme a Política de Privacidade. 
 										</label>
 										<div class="mt_checkbox_container">
 											<div class="item">
 												<input type="checkbox" id="terms" name="aceito" >
-												<label for="terms">Aceito</label>
+												<label for="terms">Sim</label>
 											</div>
 										</div>
 									</div>
