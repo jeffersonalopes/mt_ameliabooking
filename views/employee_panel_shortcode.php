@@ -1,3 +1,9 @@
+<?php 
+    $user = wp_get_current_user();
+    var_dump($user);
+?>
+
+
 <style>
     .am-add-event-date{
         display: none;
@@ -11,27 +17,46 @@
     let $ = jQuery;
     $(document).ready(function(){
         $(".am-add-event-date").remove();
-        
-
-        
 
         setInterval(function () {
+            $(".el-row:contains('Organizer') .el-checkbox").addClass('is-checked')
+            $(".el-row:contains('Organizador') .el-checkbox").addClass('is-checked')
+            
+            $(".el-row:contains('Organizer') .el-checkbox .el-checkbox__input").addClass('is-checked');
+            $(".el-row:contains('Organizador') .el-checkbox .el-checkbox__input").addClass('is-checked');
+
+            
+
             $(".am-has-divider:contains('Periods')").remove();
             $(".el-row:contains('Tags')").remove();
 
             $(".am-section-grey:contains('This is recurring event')").remove()
-            $(".am-section-grey:contains('recorrente')").remove()
+            $(".am-section-grey:contains('Este evento se repete')").remove()
 
-            $(".el-row:contains('Custom Address')").remove()
-            $(".el-row:contains('Endereço Personalizado')").remove()
+            $(".el-row:contains('Custom Address')")[1].remove()
+            $(".el-row:contains('Endereço personalizado')")[1].remove()
 
-            $(".el-row:contains('Organizer') .el-checkbox").addClass('is-checked')
-            $(".el-row:contains('Organizador') .el-checkbox").addClass('is-checked')
+            $(".el-row:contains('Allow bringing more persons')").remove()
+            $(".el-row:contains('Allow the same customer to book more than once')").remove()
 
-            $(".el-row:contains('Organizer') .el-checkbox .el-checkbox__input").addClass('is-checked');
-            $(".el-row:contains('Organizador') .el-checkbox .el-checkbox__input").addClass('is-checked');
+           
 
         }, 200)
+
+        let numberSeted = false;
+
+        var intervalNumber = setInterval(function () {
+            if(jQuery(".el-input-number .el-input .el-input__inner").length > 0){
+                if(numberSeted == false){
+                    $(".el-input-number .el-input .el-input__inner").val(100);
+                    $(".el-input-number .el-input .el-input__inner").data('aria-valuenow',100);
+
+                   
+                    numberSeted = true;
+                }
+            }
+        }, 1000) 
+        
 
         //Add default description
         var interval = setInterval(function () {
@@ -41,11 +66,7 @@
                 }
             }
         }, 1000) 
-        
-        var numberInterval = setInterva(function () {
-            jQuery(".el-input-number .el-input .el-input__inner").val(100);
-            jQuery(".el-input-number .el-input .el-input__inner").data('aria-valuenow',100);
-        }, 1000);
+     
 
     });
     
