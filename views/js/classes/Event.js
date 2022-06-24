@@ -30,6 +30,14 @@ class Event {
         this._location = location ? location : new Location();
         this._locationId = locationId;
     }
+
+    delete = async(id, ajaxUrl) => {
+        let response = await axios.post(`${ajaxUrl}?action=wpamelia_api&call=/events/status/${id}`,
+        {
+            status: "rejected", applyGlobally: false
+        });
+        console.log(response);
+    }
     
     find = async(id,ajaxUrl) => {
         let response = await axios.get(`${ajaxUrl}?action=wpamelia_api&call=/events&id=${id}`);

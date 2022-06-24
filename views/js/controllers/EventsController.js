@@ -207,7 +207,7 @@ class EventsController {
 
             newEvent = newEvent.constructByObjects(e,  e_organizer ? employee.constructByObjects(e_organizer) : false,
             e_location ? location.constructByObjects(e_location) : false);
-            if(filterPass){
+            if(filterPass && e.status != 'rejected' && e.show == true){
                 eventList.push(newEvent);
             }
            

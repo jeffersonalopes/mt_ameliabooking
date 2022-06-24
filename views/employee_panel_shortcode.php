@@ -1,7 +1,3 @@
-<?php 
-    $user = wp_get_current_user();
-    var_dump($user);
-?>
 
 
 <style>
@@ -15,6 +11,8 @@
 
 <script type="text/javascript">
     let $ = jQuery;
+
+
     $(document).ready(function(){
         $(".am-add-event-date").remove();
 
