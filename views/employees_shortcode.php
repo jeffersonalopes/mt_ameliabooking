@@ -64,7 +64,7 @@
         jQuery(document).ready(function() {
         var swiper = new Swiper(".mt-swiperInstrutores", {
             slidesPerView: 2,
-            slidesPerGroup: 1,
+            slidesPerGroup: 4,
             loop: true,
             spaceBetween: 10,
             autoplay: true,
@@ -79,17 +79,17 @@
             breakpoints: {
             480: {
                 slidesPerView: 2,
-                slidesPerGroup: 1,
+                slidesPerGroup: 2,
                 spaceBetween: 0,
             },
 			768: {
                 slidesPerView: 3,
-                slidesPerGroup: 1,
+                slidesPerGroup: 3,
                 spaceBetween: 0,
             },		
             992: {
                 slidesPerView: 4,
-                slidesPerGroup: 1,
+                slidesPerGroup: 4,
                 spaceBetween: 0,
             },
             },
