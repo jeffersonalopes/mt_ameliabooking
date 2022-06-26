@@ -169,9 +169,10 @@ class EventsController {
         let entities_consult = await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/entities&types[]=locations&types[]=tags&types[]=custom_fields&types[]=employees`);     
         let events_consult = await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/events&dates[]=${startDate.format('YYYY-MM-DD')}&page=${page}`);
         let events = events_consult.data.data.events;
+        let customFields = entities_consult.data.data.customFields;
         let entities = entities_consult.data.data;
 
-
+        console.log(customFields);
         
         while(events_consult.data.data.count > events.length) {
             events_consult =  await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/events&dates[]=${startDate.format('YYYY-MM-DD')}&page=${page}`);
@@ -188,6 +189,7 @@ class EventsController {
             let newEvent = new Event();
             let location = new Location();
             let employee = new Employee();
+            let e_custom_fields = customFields.filter(c => c.events.filter(ev => ev.id == e.id).length > 0);
 
             if(e_location){
                 if(cityFilter){
@@ -207,10 +209,11 @@ class EventsController {
 
             newEvent = newEvent.constructByObjects(e,  e_organizer ? employee.constructByObjects(e_organizer) : false,
             e_location ? location.constructByObjects(e_location) : false);
+            newEvent.customFields = e_custom_fields;
             if(filterPass && e.status != 'rejected' && e.show == true){
                 eventList.push(newEvent);
             }
-           
+            
         });
 
         if(orderBy){
@@ -220,8 +223,10 @@ class EventsController {
                 break;
                 case 'local':
                     eventList = eventList.sort(this.dynamicSort("_name"));
+                    break;
                 case 'data':
                     eventList = eventList.sort(this.dynamicSort("_start"));
+                    break;
             }
         }
         console.log(eventList);
@@ -235,9 +240,11 @@ class EventsController {
                     eventList = eventList.sort(this.dynamicSort("_instrutor"));
                 break;
                 case 'local':
-                    eventList = eventList.sort(this.dynamicSort("_local"));
+                    eventList = eventList.sort(this.dynamicSort("_name"));
+                    break;
                 case 'data':
                     eventList = eventList.sort(this.dynamicSort("_start"));
+                    break;
             }
         }
         return eventList;

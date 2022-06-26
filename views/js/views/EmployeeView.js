@@ -4,12 +4,8 @@ class EmployeeView extends View {
     }
 
     template(model, baseUrl){
-        let unities = model.events ? model.events : false;
-        let uniteNames = [];
-        unities.forEach((e) => {
-            if(!uniteNames.includes(e.local))
-                uniteNames.push(e.local);
-        });
+        let uniteNames = model.otherLocations;
+        uniteNames = uniteNames.filter(u => u != " " && u != "");
         return(
             `
             <section class="instrutor-profile">
@@ -31,7 +27,7 @@ class EmployeeView extends View {
                         ${
                             uniteNames.length > 0 ? `
                                 <div class="d-flex align-items-center align-items-lg-baseline mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/building.png' alt="Prédio"> <p><strong>Unidades em que atua:</strong>
-                                    ${uniteNames ? uniteNames.map(un => `${un}<br/>`  ).join('') : ''}
+                                    ${uniteNames ? uniteNames.map(un => un != " " && un != "" ? `${un}` : '' ).join(',') : ''}
                                 </p></div> 
                             ` : ``
                         }
@@ -57,7 +53,7 @@ class EmployeeView extends View {
                     </div>
                     </div>
                     <div class="col-12 col-lg-7 mt-4 mt-lg-0">
-                        <form id="employee-send-contact" onsubmit="sendContactForm(event)">
+                        <form id="employee-send-contact" onsubmit="sendContactForm(event,this)">
                             <div class="form-group">
                                 <input required type="text" class="form-control" id="contactName" aria-describedby="textHelp" placeholder="Nome">
                             </div>
@@ -66,7 +62,7 @@ class EmployeeView extends View {
                                 <input required type="email" class="form-control" id="contactEmail" aria-describedby="emailHelp" placeholder="Email">
                             </div>
                             <div class="col-12 col-md-6 form-group">
-                                <input required type="phone" class="form-control" id="ContactPhone" aria-describedby="phoneHelp" placeholder="Telefone">
+                                <input required type="phone" class="form-control" id="contactPhone" aria-describedby="phoneHelp" placeholder="Telefone">
                             </div>
                             </div>
                             <div class="form-group">

@@ -3,7 +3,7 @@ class Event {
         description= "",id = 0, location = new Location(), locationId= 0, 
         maxCapacity= 0, name= "", opened= false, organizerId= 0,
         parentId= 58, periods= [], pictureFullPath= null, pictureThumbPath= null,
-        price= 0, show= true, status= "", tags= [],type= "", organizer = new Employee()
+        price= 0, show= true, status= "", tags= [],type= "", organizer = new Employee(), customFields = []
     ){
         this._bookable = bookable;
         this._closed = closed;

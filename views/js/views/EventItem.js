@@ -55,78 +55,64 @@ class EventItem extends View{
 									</button>
 								</div>
 							</div>
+							<form id="formEvt${e.id}" onsubmit="return false">
 							<div class="mt_event_details_subscriptions" id="mt_event_details_subscriptions_${key}">
 								<div class="mt_row">
 									<div class="mt_column">
 										<label> * Primeiro Nome: </label>
-										<input onchange="firstName = this.value" type="text" class="form-control">
+										<input name="firstName" required onchange="firstName = this.value" type="text" class="form-control">
 									</div>
 									<div class="mt_column">
 										<label> * Sobrenome: </label>
-										<input onchange="lastName = this.value" type="text" class="form-control">
+										<input required name="lastName" onchange="lastName = this.value" type="text" class="form-control">
 									</div>
 								</div>
 								<div class="mt_row">
 									<div class="mt_column">
 										<label> * Email: </label>
-										<input  onchange="email = this.value" type="text" class="form-control">
+										<input required name="email" onchange="email = this.value" type="text" class="form-control">
 									</div>
 									<div class="mt_column phone">
 										<label> * Telefone: </label>
 										<img src="${baseUrl}resources/svg/flag.svg">
-										<input onchange="phone = this.value"  style="padding-left: 84px;" type="text" class="form-control">
+										<input required name="phone" onchange="phone = this.value"  style="padding-left: 84px;" type="text" class="form-control">
 									</div>
 								</div>
-								<div class="mt_row">
-									<div class="mt_column">
-										<label> Oque trouxe você até a MT? </label>
-										<div class="mt_checkbox_container">
-											<div class="item">
-												<input type="checkbox" id="origin" name="Saude fisica" >
-												<label for="origin">Saúde  fisica</label>
-											</div>
-											<div class="item">
-												<input type="checkbox" id="origin" name="Saude mental" >
-												<label for="origin">Saúde  mental</label>
-											</div>
-											<div class="item">
-												<input type="checkbox" id="origin" name="equilíbrio emocional" >
-												<label for="origin">Equilíbrio emocional</label>
-											</div>
-											<div class="item">
-												<input type="checkbox" id="origin" name="foco e clareza mental" >
-												<label for="origin">Foco e clareza mental</label>
-											</div>
-											<div class="item">
-												<input type="checkbox" id="origin" name="Autoconhecimento" >
-												<label for="origin">Autoconhecimento</label>
-											</div>
-											<div class="item">
-												<input type="checkbox" id="origin" name="Paz e bem-estar" >
-												<label for="origin">Paz e bem-estar</label>
-											</div>
+								${
+									e.customFields ?
+									`
+										<div class="mt_row">
+											${
+												e.customFields.map(e => {
+													return(`
+														<div class="mt_column" style="padding:0px 10px">
+															<label> ${e.label} </label>
+															<div class="mt_checkbox_container">
+																${e.options.map(opt => {
+																	return(`
+																		<div class="item">
+																			<input type="checkbox" onChange="changeCheckBoxOque(this, ${opt.customFieldId})" value="${opt.label}"  ${opt.required ? 'required' : ''} name="customField${opt.customFieldId}[]" >
+																			<label for="origin">${opt.label}</label>
+																		</div>
+																	`)	
+																}).join('')}
+															</div>
+														</div>
+													`)
+												}).join('')
+											}
 										</div>
-									</div>
-									<div class="mt_column" style="justify-content: flex-start;
-									height: 308px;
-									margin-top: 30px;">
-										<label>
-										* Ao preencher meus dados, concordo em receber comunicações sobre produtos e serviços, conforme a Política de Privacidade. 
-										</label>
-										<div class="mt_checkbox_container">
-											<div class="item">
-												<input type="checkbox" id="terms" name="aceito" >
-												<label for="terms">Sim</label>
-											</div>
-										</div>
-									</div>
-								</div>
+									` 
+									:
+									``
+								}
 								<div class="mt_row confirm">
 									<div class="mt_column">
-										<button onClick="bookingEvent(${e.id})" class="mt_btn_default"> Confirmar </button>
+										<button type="submit" onClick="bookingEvent(${e.id})" class="mt_btn_default"> Confirmar </button>
 									</div>
 								</div>
 							</div>
+							</Form>
 						</div>
 					</div>
 					 </div>`

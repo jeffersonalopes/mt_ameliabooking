@@ -59,6 +59,7 @@
     let lastName = "";
     let email = "";
     let phone = "";
+    let checkBox = [];
 
     render();
 
@@ -85,6 +86,13 @@
     }
 
     async function bookingEvent(eventId){
+        let form = document.getElementById(`formEvt${eventId}`);
+        let formData = new FormData(form);
+        firstName =  formData.getAll('firstName')[0];
+        lastName =  formData.getAll('lastName')[0];
+        email =  formData.getAll('email')[0];
+        phone =  formData.getAll('phone')[0];
+       
         if(!firstName || !lastName || !email || !phone ){
             jQuery("#mt_message_overlay_error").fadeIn();
             jQuery("#mt_message_overlay_error").css('display', 'flex');
@@ -93,20 +101,55 @@
             jQuery("#mt_loader_overlay").fadeIn();
             let bkEvent = eventList.filter(e => e.id == eventId);
             bkEvent = bkEvent[0];
+            
             let booking = await controller.booking(bkEvent,email, firstName, lastName, phone, ajaxurl);
             if(booking){
                 jQuery("#mt_message_overlay_success").fadeIn();
                 jQuery("#mt_message_overlay_success").css('display', 'flex');
                 jQuery("#mt_loader_overlay").fadeOut();
-                setTimeout(function () {
-                    location.reload(true);
-                }, 4000);
+                
+                let filteredCheckOptions = checkBox.filter(c => c ? c : false);
+
+                //Connecting to Active Campaing
+                const url = `${ajaxurl}?action=event_subscription`;
+                let formData = new FormData();
+                formData.append('email',email)
+                formData.append('firstName',firstName)
+                formData.append('lastName',lastName)
+                formData.append('phone',phone)
+                formData.append('oqueTrouxe',filteredCheckOptions.join(', '));
+                formData.append('dataPalestra',moment(bkEvent.periods[0].periodStart).format('YYYY-MM-DD'));
+                formData.append('horaPalestra',moment(bkEvent.periods[0].periodStart).format('HH:mm'));
+                formData.append('dataHoraPalestra',moment(bkEvent.periods[0].periodStart).format('YYYY-MM-DD HH:mm'));
+            
+                formData.append('instrutor',bkEvent.organizer?.firstName+' '+ bkEvent.organizer?.lastName)
+                formData.append('message',jQuery("#contactMessage").val())
+
+                let contactReq = await axios.post(`${url}`,formData,{
+                    headers: { 
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    }
+                });
+                // setTimeout(function () {
+                //     location.reload(true);
+                // }, 4000);
             }else{
                 jQuery("#mt_message_overlay_error").fadeIn();
                 jQuery("#mt_message_overlay_error").css('display', 'flex');
                 jQuery("#mt_loader_overlay").fadeOut();
             }
         }
+    }
+
+    function changeCheckBoxOque(event,key){
+        if(!checkBox[key])
+            checkBox[key] = new Array();
+
+        if(event.checked)
+            checkBox[key].push(event.value);
+        else
+            checkBox[key].splice(checkBox[key].indexOf(event.value));
+        console.log(checkBox);
     }
 
 
@@ -126,16 +169,9 @@
     const filterEvents = async() => {
         
        jQuery("#mt_loader_overlay").fadeIn();
-       
 
        eventList = await controller.list(1, moment(), orderBy, state.sigla ? state.sigla : false,
-       
        city.nome ? city.nome : false);
-
-
-
-
-       console.log(eventList);
        if(eventList.length > 0){
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
@@ -170,8 +206,8 @@
     const changeOrderBy = (order) => {
         orderBy = order;
         jQuery("#mt_loader_overlay").fadeIn();
-        controller.orderBy(eventList, orderBy);
-        controller.renderItems(eventList);
+        evtL = controller.orderBy(eventList, orderBy);
+        controller.renderItems(evtL);
         jQuery("#mt_loader_overlay").fadeOut();
     }
 

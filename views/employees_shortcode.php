@@ -1,3 +1,18 @@
+
+<?php 
+   $all_users = get_users();
+   $userInfos = [];
+   foreach($all_users  as $user){
+    
+    $desc = get_user_meta($user->ID)['description'][0];
+    $userInfos[] = [
+        'email' => $user->data->user_email,
+        'id' => $user->ID,
+        'otherPlaces' => $desc ? explode(';', $desc) : []
+    ];
+   }
+
+?>
 <div id="mt_employees_shortcode" class="p-0">
     <div id="mt_container">
         <div id="mt_filters">
@@ -23,20 +38,22 @@
 </div>
 
 <script>
+    
     const ajaxurl = '<?php echo admin_url( 'admin-ajax.php' ); ?>';
     const baseurl = '<?php echo site_url(); ?>';
     let $ = document.querySelector.bind(document);
     let employee_list = [];
     //Get alla employee
+    let wp_user_infos = <?php echo json_encode($userInfos) ?>;
     const controller = new EmployeeController(ajaxurl, baseurl, $("#mt_employees_result"));
-    const filterController = new FilterController(ajaxurl, baseurl, $("#mt_filters"));
+    const filterController = new EmployeeFilterController(ajaxurl, baseurl, $("#mt_filters"));
 
     let orderBy = "";
     let state = new State();
     let city = new City();
     let states = [];
     let cities = [];
-
+    let currentName = "";
 
 
 
@@ -50,24 +67,37 @@
     }
 
     async function getEmployees() {
-        employee_list = await controller.list();
+        employee_list = await controller.list(false, false, false, wp_user_infos);
         controller.renderItems(employee_list);
         startSlider();
     }
 
     async function getFilterEntities(){
         states = await state.list();
-        filterController.renderFields(states, cities, "--", "--", false);
+        filterController.renderFields(states, cities, "--", "--", currentName);
     }
+
+    function filterByName(str){
+        currentName = str;
+        let result = employee_list;
+        result = result.filter(e => e.firstName.toLowerCase().includes(str.toLowerCase()) || e.lastName.toLowerCase().includes(str.toLowerCase()));
+        controller.renderItems(result);
+        console.log(result);
+        startSlider();
+    }
+
+
+    
 
     function startSlider() {
         jQuery(document).ready(function() {
         var swiper = new Swiper(".mt-swiperInstrutores", {
-            slidesPerView: 2,
+            slidesPerView: 4,
             slidesPerGroup: 4,
-            loop: true,
+            loop: false,
             spaceBetween: 10,
             autoplay: true,
+            centeredSlides:false,
             pagination: {
             el: ".swiper-pagination",
             clickable: true,
@@ -81,16 +111,20 @@
                 slidesPerView: 2,
                 slidesPerGroup: 2,
                 spaceBetween: 0,
+                autoplay: true,
             },
 			768: {
                 slidesPerView: 3,
                 slidesPerGroup: 3,
                 spaceBetween: 0,
+                autoplay: true,
             },		
             992: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
+                loop:false,
                 spaceBetween: 0,
+                autoplay: true,
             },
             },
         });
@@ -100,7 +134,10 @@
 
     const removeFilters = async() => {
         jQuery("#mt_loader_overlay").fadeIn();
-        filterController.renderFields(states,[], "--");
+        currentName = "";
+        state = new State();
+        city = new City();
+        filterController.renderFields(states, cities, "--", "--", currentName);
         employess = await controller.list();
         jQuery("#mt_employees_result").css('display', 'flex');
         controller.renderItems(employess);
@@ -113,9 +150,9 @@
     const filterEvents = async() => {
        jQuery("#mt_loader_overlay").fadeIn();
        
-       console.log(state.sigla);
+       console.log(city.nome);
        eventList = await controller.list(orderBy, state.sigla ? state.sigla : false,
-       city.nome ? city.nome : false);
+       city.nome != '' ? city.nome : false);
        if(eventList.length > 0){
             jQuery("#mt_employees_result").css('display', 'flex');
             controller.renderItems(eventList);
@@ -138,7 +175,7 @@
     const changeState = async(uf) =>{
         state.sigla = uf;
         cities = await city.getByUf(uf);
-        filterController.renderFields(states, cities, uf);
+        filterController.renderFields(states, cities, uf, "--", currentName);
     }
     const changeCity = (val) =>{
         city.nome = val;
