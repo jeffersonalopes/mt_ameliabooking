@@ -97,7 +97,7 @@
             spaceBetween: 10,
             autoplay: true,
 			 autoplay: {
-			delay: 3000,
+			  delay: 3000,
 		 	},
             centeredSlides:false,
             pagination: {
@@ -113,20 +113,16 @@
                 slidesPerView: 2,
                 slidesPerGroup: 2,
                 spaceBetween: 0,
-                autoplay: true,
             },
 			768: {
                 slidesPerView: 2,
                 slidesPerGroup: 2,
                 spaceBetween: 0,
-                autoplay: true,
             },		
             992: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
-                loop:false,
                 spaceBetween: 0,
-                autoplay: true,
             },
             },
         });
