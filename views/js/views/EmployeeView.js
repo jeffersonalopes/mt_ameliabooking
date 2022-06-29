@@ -23,11 +23,12 @@ class EmployeeView extends View {
                         <h1>${model.firstName} ${model.lastName}</h1>
                         </div>
                         <div class="instrutor-address">
-                        <div class="d-flex align-items-center align-items-lg-baseline justify-content-start mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/map.png'  alt="Mapa"> <p><strong>Onde atua:</strong> ${model.location?.name ? model.location.name : ''}</p></div> 
+                        <div class="d-flex align-items-center align-items-lg-baseline justify-content-start mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/map.png'  alt="Mapa"> <p><strong>Onde atua:</strong>
+                        ${uniteNames ? uniteNames.map(un => un != " " && un != "" ? `${un}` : '' ).join(',') : ''}</p></div> 
                         ${
                             uniteNames.length > 0 ? `
-                                <div class="d-flex align-items-center align-items-lg-baseline mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/building.png' alt="Prédio"> <p><strong>Unidades em que atua:</strong>
-                                    ${uniteNames ? uniteNames.map(un => un != " " && un != "" ? `${un}` : '' ).join(',') : ''}
+                                <div class="d-flex align-items-center align-items-lg-baseline mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/building.png' alt="Prédio"> <p><strong>Unidades em que atua: ${model.location?.name ? model.location.name : ''}</strong>
+                                    
                                 </p></div> 
                             ` : ``
                         }

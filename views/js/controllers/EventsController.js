@@ -180,8 +180,6 @@ class EventsController {
                 events.push(events_consult.data.data.events);
         }
 
-        let eventList = [];
-        
         events.forEach((e) => {
             let filterPass = true;
             let e_location = entities.locations.filter( l => l.id == e.locationId)[0];
@@ -189,7 +187,7 @@ class EventsController {
             let newEvent = new Event();
             let location = new Location();
             let employee = new Employee();
-            let e_custom_fields = customFields.filter(c => c.events.filter(ev => ev.id == e.id).length > 0);
+            let e_custom_fields = customFields;
 
             if(e_location){
                 if(cityFilter){
@@ -229,7 +227,6 @@ class EventsController {
                     break;
             }
         }
-        console.log(eventList);
         return eventList;
     }
 

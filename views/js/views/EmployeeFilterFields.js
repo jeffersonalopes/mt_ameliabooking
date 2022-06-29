@@ -31,8 +31,8 @@ class EmployeeFilterFields extends View{
           </select>
         </div>
       </div>
-      <div class="mt_row" width="100%">
-        <div class="mt_filter input" style="flex:1">
+      <div class="mt_row" >
+        <div class="mt_filter input">
           <input type="text" id="nameFilter" class="form-control" placeholder="Procurar pelo nome" value="${model.currentName}" onKeyUp="filterByName(value)" class="form-control">
         </div>
         </div>

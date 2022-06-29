@@ -15,11 +15,9 @@ class EmployeeSlideItem extends View {
                     <div class="hover">
                         <div>
                         <h6>${e.firstName} ${e.lastName}</h6>
-                        <p>${e.location.name}</p>
                         <p style="text-align: center;font-size:14px;">
                             ${
                                otherLocations.join('<br/>')
-                               
                             }
                         </p>
                         </div>

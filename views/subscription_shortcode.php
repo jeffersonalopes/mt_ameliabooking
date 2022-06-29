@@ -130,9 +130,9 @@
                         "Content-Type": "application/x-www-form-urlencoded"
                     }
                 });
-                // setTimeout(function () {
-                //     location.reload(true);
-                // }, 4000);
+                setTimeout(function () {
+                    location.reload(true);
+                }, 1000);
             }else{
                 jQuery("#mt_message_overlay_error").fadeIn();
                 jQuery("#mt_message_overlay_error").css('display', 'flex');

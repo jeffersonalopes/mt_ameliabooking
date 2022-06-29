@@ -519,7 +519,7 @@
 }
 
 .mt_event_details_subscriptions .mt_column.phone {
-  padding-left: 90px;
+  padding-left: 140px;
 }
 
 .mt_event_details_subscriptions .mt_column.phone img {
@@ -539,9 +539,9 @@
   content: "";
   position: absolute;
   width: 10px;
-  height: 38px;
+  height: 37px;
   border-left: solid 1px #F29F05;
-  bottom: 18px;
+  bottom: 15px;
   left: 77px;
 }
 
