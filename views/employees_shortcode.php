@@ -1,4 +1,3 @@
-
 <?php 
    $all_users = get_users();
    $userInfos = [];
@@ -94,9 +93,12 @@
         var swiper = new Swiper(".mt-swiperInstrutores", {
             slidesPerView: 4,
             slidesPerGroup: 4,
-            loop: false,
+            loop: true,
             spaceBetween: 10,
             autoplay: true,
+			 autoplay: {
+			  delay: 3000,
+		 	},
             centeredSlides:false,
             pagination: {
             el: ".swiper-pagination",
@@ -111,20 +113,16 @@
                 slidesPerView: 2,
                 slidesPerGroup: 2,
                 spaceBetween: 0,
-                autoplay: true,
             },
 			768: {
                 slidesPerView: 2,
                 slidesPerGroup: 2,
                 spaceBetween: 0,
-                autoplay: true,
             },		
             992: {
                 slidesPerView: 4,
                 slidesPerGroup: 4,
-                loop:false,
                 spaceBetween: 0,
-                autoplay: true,
             },
             },
         });
