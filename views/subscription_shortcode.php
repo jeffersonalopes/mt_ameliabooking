@@ -75,7 +75,7 @@
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
             controller.renderItems(eventList);
-            jQuery('.phoneMask').mask('(00) 0000-0000');
+            jQuery('.phoneMask').mask('(00) 0000-00000');
         }else{
             jQuery("#mt_filter_results").css('display', 'none');
             jQuery("#mt_empty_form").css('display', 'block');
@@ -177,7 +177,7 @@
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
             controller.renderItems(eventList);
-            jQuery('.phoneMask').mask('(00) 0000-0000');
+            jQuery('.phoneMask').mask('(00) 0000-00000');
        }else{
             jQuery("#mt_filter_results").css('display', 'none');
             let texto = "";
