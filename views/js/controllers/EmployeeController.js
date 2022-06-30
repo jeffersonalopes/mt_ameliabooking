@@ -43,14 +43,17 @@ class EmployeeController {
                 let e_location = locations.find(loc => loc.id == e.locationId);
                 let location = new Location();
                 let otherLocations = [];
+                let addressLine = "";
                 if(userInfo){
                     let info = userInfo.filter(u => e.email == u.email ? u.otherPlaces : false)[0];
                     if(info){
                         otherLocations = info.otherPlaces;
+                        if(info.addressLine)
+                            addressLine = info.addressLine
                     }
                 }
                 e.otherLocations = otherLocations;
-
+                e.addressLine = addressLine;
                 
 
                 if(e_location){

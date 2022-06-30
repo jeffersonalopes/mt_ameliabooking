@@ -75,6 +75,7 @@
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
             controller.renderItems(eventList);
+            jQuery('.phoneMask').mask('(00) 0000-0000');
         }else{
             jQuery("#mt_filter_results").css('display', 'none');
             jQuery("#mt_empty_form").css('display', 'block');
@@ -118,8 +119,8 @@
                 formData.append('lastName',lastName)
                 formData.append('phone',phone)
                 formData.append('oqueTrouxe',filteredCheckOptions.join(', '));
-                formData.append('dataPalestra',moment(bkEvent.periods[0].periodStart).format('YYYY-MM-DD'));
-                formData.append('horaPalestra',moment(bkEvent.periods[0].periodStart).format('HH:mm'));
+                formData.append('dataPalestra',moment(bkEvent.periods[0].periodStart).subtract(3, 'hours').format('YYYY-MM-DD'));
+                formData.append('horaPalestra',moment(bkEvent.periods[0].periodStart).subtract(3, 'hours').format('HH:mm'));
                 formData.append('dataHoraPalestra',moment(bkEvent.periods[0].periodStart).format('YYYY-MM-DD HH:mm'));
             
                 formData.append('instrutor',bkEvent.organizer?.firstName+' '+ bkEvent.organizer?.lastName)
@@ -176,6 +177,7 @@
             jQuery("#mt_filter_results").css('display', 'block');
             jQuery("#mt_empty_form").css('display', 'none');
             controller.renderItems(eventList);
+            jQuery('.phoneMask').mask('(00) 0000-0000');
        }else{
             jQuery("#mt_filter_results").css('display', 'none');
             let texto = "";

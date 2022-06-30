@@ -169,10 +169,9 @@ class EventsController {
         let entities_consult = await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/entities&types[]=locations&types[]=tags&types[]=custom_fields&types[]=employees`);     
         let events_consult = await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/events&dates[]=${startDate.format('YYYY-MM-DD')}&page=${page}`);
         let events = events_consult.data.data.events;
-        let customFields = entities_consult.data.data.customFields;
         let entities = entities_consult.data.data;
+        let customFields = entities_consult.data.data.customFields;
 
-        console.log(customFields);
         
         while(events_consult.data.data.count > events.length) {
             events_consult =  await axios.get(`${this._ajaxUrl}?action=wpamelia_api&call=/events&dates[]=${startDate.format('YYYY-MM-DD')}&page=${page}`);
@@ -180,6 +179,8 @@ class EventsController {
                 events.push(events_consult.data.data.events);
         }
 
+        let eventList = [];
+        
         events.forEach((e) => {
             let filterPass = true;
             let e_location = entities.locations.filter( l => l.id == e.locationId)[0];
@@ -211,7 +212,7 @@ class EventsController {
             if(filterPass && e.status != 'rejected' && e.show == true){
                 eventList.push(newEvent);
             }
-            
+           
         });
 
         if(orderBy){
@@ -221,13 +222,14 @@ class EventsController {
                 break;
                 case 'local':
                     eventList = eventList.sort(this.dynamicSort("_name"));
-                    break;
                 case 'data':
                     eventList = eventList.sort(this.dynamicSort("_start"));
-                    break;
             }
         }
+        console.log(eventList);
         return eventList;
+        
+        
     }
 
     orderBy = function(eventList, orderBy) {

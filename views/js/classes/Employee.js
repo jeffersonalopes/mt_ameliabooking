@@ -2,7 +2,7 @@ class Employee{
     constructor(birthday= moment(),email= "",firstName= "",
         id= 0,lastName= "",locationId= 0, note= "",phone= "",
         pictureFullPath= "",pictureThumbPath= "",status= "",
-        type= "", location = new Location(), events = [], otherLocations = []
+        type= "", location = new Location(), events = [], otherLocations = [], addressLine = ""
     ){
         this._birthday = birthday;
         this._email = email;
@@ -17,7 +17,8 @@ class Employee{
         this._pictureThumbPath = pictureThumbPath;
         this._status = status;
         this._events = events;
-        this._otherLocations = otherLocations
+        this._otherLocations = otherLocations;
+        this._addressLine = addressLine;
         this._type = type;
     }
 
@@ -35,13 +36,16 @@ class Employee{
             let e_location = locations.find(loc => loc.id == e.locationId);
             let location = new Location();
             let otherPlaces = '';
+            let addressLine = '';
             if(wp_user_infos){
                 let info = wp_user_infos.filter(u => e.email == u.email ? u.otherPlaces : false)[0];
                 if(info){
+                    if(info.addressLine)
+                        addressLine = info.addressLine
                     otherPlaces = info.otherPlaces;
                 }
             }
-
+            e.addressLine = addressLine;
             e.otherLocations = otherPlaces;
             employeeItem.constructByObjects(e, e_location ? location.constructByObjects(e_location) : false);
             employeeItem.events = await eventsController.listByOrganizer(employeeItem.id);
@@ -110,7 +114,13 @@ class Employee{
     get otherLocations(){
         return this._otherLocations;
     }
+    get addressLine(){
+        return this._addressLine;
+    }
 
+    set addressLine(addressLine){
+        this._addressLine = addressLine;
+    }    
     set otherLocations(value){
         this._otherLocations = value;
     }

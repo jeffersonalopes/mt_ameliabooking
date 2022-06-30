@@ -27,7 +27,7 @@ class EmployeeView extends View {
                         ${uniteNames ? uniteNames.map(un => un != " " && un != "" ? `${un}` : '' ).join(',') : ''}</p></div> 
                         ${
                             uniteNames.length > 0 ? `
-                                <div class="d-flex align-items-center align-items-lg-baseline mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/building.png' alt="Prédio"> <p><strong>Unidades em que atua: ${model.location?.name ? model.location.name : ''}</strong>
+                                <div class="d-flex align-items-center align-items-lg-baseline mb-2"><img loading="lazy" src='${baseUrl}/images/instrutor/building.png' alt="Prédio"> <p><strong>Unidades em que atua: ${model.addressLine ? model.addressLine : ''}</strong>
                                     
                                 </p></div> 
                             ` : ``

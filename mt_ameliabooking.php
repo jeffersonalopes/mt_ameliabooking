@@ -17,7 +17,7 @@ function add_plugins_and_scripts(){
    wp_register_style('add-mt-ameleia-css', plugin_dir_url(__FILE__).'views/styles/main.css?v=3213', '', '', 'screen');
    wp_register_script('add-mt-amelia-axios', 'https://unpkg.com/axios/dist/axios.min.js', '', null, '');
    wp_register_script('add-mt-amelia-moment', 'https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js', '', null, '');
-   
+   wp_register_script('add-mt-amelia-mask', plugin_dir_url(__FILE__).'views/js/util/jquery.mask.min.js', '', null, '');
    //Js Entities
    wp_register_script('add-plugin-classe-location', plugin_dir_url(__FILE__).'views/js/classes/Location.js','', null, '');
    wp_register_script('add-plugin-classe-employee', plugin_dir_url(__FILE__).'views/js/classes/Employee.js','', null, '');
@@ -46,6 +46,7 @@ function add_plugins_and_scripts(){
    wp_enqueue_style('add-mt-ameleia-css');
    wp_enqueue_script('add-mt-amelia-axios');
    wp_enqueue_script('add-mt-amelia-moment');
+   wp_enqueue_script('add-mt-amelia-mask');
 
    //Enquee Views
    wp_enqueue_script('add-plugin-view-abstract');
@@ -252,6 +253,24 @@ function ajax_event_subscription(){
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
       curl_setopt($ch, CURLOPT_HTTPHEADER, array('Api-Token: '.$key));
       $result = curl_exec($ch);
+
+      curl_close($ch);
+
+      $url = 'https://meditacaotranscedental.api-us1.com/api/3/contactTags';
+      $payload = Array(
+         "contactTag"=> Array(
+            "contact"=> $contactId,
+            "tag"=> "21"
+         )
+      );
+      $ch = curl_init($url); 
+      curl_setopt($ch, CURLOPT_POST, 1);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($payload));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Api-Token: '.$key));
+      $result = curl_exec($ch);
+
+      curl_close($ch);
    }
    echo true;
 

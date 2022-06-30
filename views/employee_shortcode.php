@@ -2,11 +2,12 @@
    $all_users = get_users();
    $userInfos = [];
    foreach($all_users  as $user){
-    
+    $customer = new WC_Customer( $user->ID );
     $desc = get_user_meta($user->ID)['description'][0];
     $userInfos[] = [
         'email' => $user->data->user_email,
         'id' => $user->ID,
+        'addressLine' => $customer->get_billing_address_1(),
         'otherPlaces' => $desc ? explode(';', $desc) : []
     ];
    }
