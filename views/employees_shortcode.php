@@ -93,7 +93,7 @@
         var swiper = new Swiper(".mt-swiperInstrutores", {
             slidesPerView: 4,
             slidesPerGroup: 4,
-            loop: true,
+            loop: false,
             spaceBetween: 10,
             autoplay: true,
 			 autoplay: {
